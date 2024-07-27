@@ -1,0 +1,79 @@
+當然，以下是代碼的逐行解釋：
+
+```cpp
+#include <iostream>
+using namespace std;
+```
+這兩行是標準的包含標頭文件和使用命名空間宣告，用於使用C++的輸出輸入功能。
+
+```cpp
+class Base
+{
+public:
+    virtual void iam() { cout << "Base \n"; }
+};
+```
+這段定義了一個名為 `Base` 的基類。該類包含一個公有的虛函數 `iam()`，該函數輸出 "Base"。
+
+```cpp
+class D1 : public Base
+{
+public:
+    virtual void iam() {
+        cout << "D1 \n";
+    }
+};
+```
+這段定義了一個名為 `D1` 的派生類，繼承自 `Base`。它重寫了基類的虛函數 `iam()`，輸出 "D1"。
+
+```cpp
+class D2 : public Base
+{
+public:
+    virtual void iam() {
+        cout << "D2 \n";
+    }
+};
+```
+這段定義了一個名為 `D2` 的派生類，繼承自 `Base`。它也重寫了基類的虛函數 `iam()`，輸出 "D2"。
+
+```cpp
+int main() {
+```
+這是程序的主函數，程序從這裡開始執行。
+
+```cpp
+    Base *bPtr1;
+    Base *bPtr2;
+```
+這兩行聲明了兩個指向 `Base` 類型的指針 `bPtr1` 和 `bPtr2`。
+
+```cpp
+    D1 d1;
+    D2 d2;
+```
+這兩行創建了 `D1` 和 `D2` 類型的對象 `d1` 和 `d2`。
+
+```cpp
+    bPtr1 = &d1;
+    bPtr1->iam();
+```
+這兩行將 `d1` 的地址賦值給 `bPtr1`，然後通過指針 `bPtr1` 調用 `iam()` 函數。由於 `bPtr1` 指向的是 `D1` 類型的對象，因此實際調用的是 `D1` 的 `iam()` 函數，輸出 "D1"。
+
+```cpp
+    bPtr2 = &d2;
+    bPtr2->iam();
+```
+這兩行將 `d2` 的地址賦值給 `bPtr2`，然後通過指針 `bPtr2` 調用 `iam()` 函數。由於 `bPtr2` 指向的是 `D2` 類型的對象，因此實際調用的是 `D2` 的 `iam()` 函數，輸出 "D2"。
+
+```cpp
+    return 0;
+}
+```
+這行表示程序結束並返回 `0`，表示程序成功運行。
+
+運行這段代碼的輸出將會是：
+```
+D1
+D2
+```
